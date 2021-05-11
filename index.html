@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="fixed-top py-3">HSP</header>
+    <main>
+      <div id="app">
+        <div v-for="(quiz, index) in quizes">
+          <div v-show="index === num" @click="question">
+            <p>第{{ (index+1)}}問</p>
+            <p>{{ quiz.question }}</p>
+            <p>
+              それぞれ1（全く当てはまらない）～7（非常に当てはまる）で回答する
+            </p>
+            <button class="bun btn-primary" v-on:click="count += 1">1</button>
+            <button class="bun btn-primary" v-on:click="count += 2">2</button>
+            <button class="bun btn-primary" v-on:click="count += 3">3</button>
+            <button class="bun btn-primary" v-on:click="count += 4">4</button>
+            <button class="bun btn-primary" v-on:click="count += 5">5</button>
+            <button class="bun btn-primary" v-on:click="count += 6">6</button>
+            <button class="bun btn-primary" v-on:click="count += 7">7</button>
+          </div>
+        </div>
+        <div v-if="num === quizes.length">
+          <p>男性平均:83.07</p>
+          <p>女性平均:89.15</p>
+          <p>結果：{{ count }}</p>
+        </div>
+      </div>
+    </main>
+    <div id="app2">
+      <kinesis-container id="container">
+        <kinesis-element
+          tag="img"
+          :src="'IMG_B2167CDF018D-1-removebg-preview.png'"
+          :strength="40"
+          type="rotate"
+          transform-origin="50% 300%"
+          axis="x"
+          type="depth_inv"
+        ></kinesis-element>
+      </kinesis-container>
+    </div>
+    <footer class="fixed-bottom py-3">
+      リロードすると最初からになるので注意
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-kinesis@1.0.2/dist/vue-kinesis.umd.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

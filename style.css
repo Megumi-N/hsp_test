@@ -1,0 +1,11 @@
+body {
+  text-align: center;
+  width: 100%;
+  padding-top: 70px;
+}
+
+header,
+footer {
+  background-color: gray;
+  color: white;
+}
